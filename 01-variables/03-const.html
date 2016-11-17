@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>03 - Const</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+
+  //const - Declara uma constante apenas de leitura.
+
+  /*
+    Uma constante não pode alterar seu valor por meio de uma atribuição ou ao ser declarada
+    novamente enquanto o script é executado.
+
+    Deve ser inicializada com um valor.
+
+    const é limitada ao escopo do bloco {}, se comporta igual ao let quando se trata do escopo
+    em que foram declaradas.
+  */
+
+  /*
+    É obrigatório que um valor seja atrbuido à constante em sua declaração.
+
+    const animal;
+
+    Uncaught SyntaxError: Missing initializer in const declaration
+  */
+
+  /*
+    Não permite declarar novamente uma constante
+
+    const animal = "Leão";
+    const animal = "Gato";
+
+    Uncaught SyntaxError: Identifier 'animal' has already been declared
+  */
+
+  /*
+    Não permite reatribuir/modificar um valor para a constante.
+
+    const animal = "Leão";
+    animal = "Gato";
+
+    Uncaught TypeError: Assignment to constant variable.(…)
+  */
+
+
+  // Const também funciona com objetos
+  const pessoa = {
+    nome: "Amanda",
+    idade: 50
+  };
+
+  /*
+    Sobrescrever o objeto falha
+
+    pessoa = {
+      sorenome: "Vianna"
+    }
+
+    Uncaught TypeError: Assignment to constant variable.(…)
+  */
+
+  // Entretanto, atributos de objetos não estão protegidos, os seus valores podem ser modificados.
+  pessoa.idade = 30;
+  console.log(pessoa); //Object {nome: "Amanda", idade: 30}
+
+  /*
+    Para poteger um objeto, usamos o método Object.freeze
+
+    Object.freeze - é responsável por "congelar" um objeto, permitindo que outros códigos
+    não consiga deletar ou alterar nenhuma propriedade do objeto.
+
+    Com isso nosso objeto pessoa se torna uma variável imutável.
+  */
+
+  Object.freeze(pessoa);
+  pessoa.idade = 35;
+  console.log(pessoa); //Object {nome: "Amanda", idade: 30}
+
+  // Object.isFrozen - diz se um objeto está ou não congelado/protegido
+  console.log(Object.isFrozen(pessoa)); //true
+
+</script>
+</html>

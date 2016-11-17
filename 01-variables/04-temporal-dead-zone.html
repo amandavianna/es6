@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>04 - Temporal Dead Zone (TDZ)</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+
+  /*
+    Hoisting - é um comportamento do JavaScript de mover declarações para o topo de um escopo.
+    Isso significa que você é capaz de utilizar uma variável antes mesmo de tê-la declarado.
+
+    Com var, a variável sempre é declarada como undefined no início da função, logo não temos o
+    temporal dead zone quando usamos var.
+  */
+  console.log(animal);
+  var animal = "Leão";
+
+  /*
+    Porém se declararmos a variável como sendo const ou let, receberemos um ReferenceError.
+
+    console.log(x);
+    let x = 1;
+
+    Uncaught ReferenceError: x is not defined(…)
+
+    Let ou const irá içar a variável para o topo do bloco. No entanto, referenciar a variável
+    no bloco {} antes da declaração da variável resulta em um ReferenceError.
+    A variável está em uma "zona morta temporal" desde o início do bloco até que a declaração seja processada.
+  */
+
+  let x = 'outer scope';
+  (function(){
+    console.log(x);
+    let x = 'inner scope';
+  })();
+
+  //Uncaught ReferenceError: x is not defined(…)
+
+</script>
+</html>

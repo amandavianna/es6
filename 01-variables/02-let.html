@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>02 - Let</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+
+  //let - Essa sintaxe pode ser usada para declarar uma variável local no escopo do bloco {} de onde foi declarada.
+
+  /*
+    Não podemos criar uma variável com o mesmo nome utilizando var e let no mesmo escopo.
+
+    var y;
+    let y;
+
+    Uncaught SyntaxError: Identifier 'y' has already been declared
+  */
+
+  /*
+    As duas variáveis possuem o mesmo nome, mas não conflitam, porque elas estão declaradas em escopos diferentes.
+
+    var y;
+    {
+      let y;
+    }
+
+  */
+
+  var animal = "Leão";
+  console.log(animal); //Leão
+
+  {
+    let animal = "Gato";
+    console.log(animal); //Gato
+  }
+
+  console.log(animal); //Leão
+
+  /*
+    O let é usado quando não queremos correr o risco dessas variáveis serem reescritas em outros trechos de código.
+    O let funciona apenas dentro do escopo definido. Não permite ser reescrito em escopos diferentes.
+  */
+
+  if(true) {
+    let x = 1;
+  }
+  console.log(x); //Uncaught ReferenceError: x is not defined(…)
+
+</script>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>01 - Escopo JS</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+
+  /*
+
+    Quando você declara uma variável fora de qualquer função, ela é chamada de variável global,
+    porque está disponível para qualquer outro código no documento atual.
+
+    Quando você declara uma variável dentro do bloco de uma função, ela é chamada de variável local,
+    pois ela está disponível somente dentro do escopo dessa função.
+
+  */
+
+  //var - Esta sintaxe pode ser usada para declarar tanto variáveis locais como variáveis global.
+
+  //Aqui estou criando uma variável chamada animal e em seguida atribuindo o valor Leão.
+  var animal = "Leão";
+  console.log(animal); //Leão
+
+  //Podemos também, criar uma variável e depois atribuir o valor desejado.
+  var animal;
+  animal = "Gato";
+  console.log(animal); //Gato
+
+  /*
+    Quando atribuímo um valor para uma variável global dentro de um escopo de uma função, você consegue
+    pegar esse valor atribuído em qualquer momento, pois essa variável está para todo o contexto.
+
+    Se você quiser exibir o valor de uma variável criada dentro do bloco de uma função fora do seu contexto,
+    você não conseguirá, pois ela é uma variável local.
+  */
+
+  function sawAnimal() {
+    animal = "Cachorro";
+  }
+
+  sawAnimal();
+  console.log(animal); //Cachorro
+
+  if(true) {
+    var x = 1;
+  }
+  console.log(x); //1
+
+</script>
+</html>
